@@ -220,12 +220,12 @@ end
 
 if numel(t) == 1
 	t0 = t;
-	t = linspace(t0,t0 + (length(d) - 1)/H(1).SampleRate/86400,length(d))';
+	t = linspace(t0,t0 + (length(d) - 1)/double(H(1).SampleRate)/86400,length(d))';
 	m = zeros(size(t));
 else
 	t = t(:);
 	% computes time continuity: 50% tolerance on the sampling frequency
-	m = [0;(dt > (1 + fs_tol)/H(1).SampleRate/86400 | dt < (1 - fs_tol)/H(1).SampleRate/86400)];
+	m = [0;(dt > (1 + fs_tol)/double(H(1).SampleRate)/86400 | dt < (1 - fs_tol)/double(H(1).SampleRate)/86400)];
 end
 
 % ! IMPORTANT NOTE ON ENCODING FORMAT ARGUMENT !
